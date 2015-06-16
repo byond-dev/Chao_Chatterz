@@ -1,0 +1,92 @@
+mob/Stat()	//-- Status Pages
+	statpanel("Server")
+	stat("-=Server Info=-")
+	stat("Host:","[HostMSG]")
+	if(AGM.Find(usr.ckey))
+		if(maskedip.Find(world.address))
+			stat("World Address:","Masked")
+		else
+			stat("World Address:","[HostIP]")
+	stat("Updated:","[date]")
+	stat("Created:","[time2text(creation,"Day, Month DD, YYYY at hh:mm:ss")]")
+	stat("Uptime:","[converttime2(world.time)]")
+	stat("Lag Rate:","[world.cpu]")
+	stat("")
+	stat("-=Server Settings=-")
+	if(Open == 1)
+		stat("Server Status:","Open")
+	if(Open == 0)
+		stat("Server Status:","Closed")
+	if(conpass)
+		stat("Password:","Enabled")
+	if(!conpass)
+		stat("Password:","Disabled")
+	stat("Players:","[People]/[maxpeeps]")
+	stat("Build Limit:","[BMax] objects per key.")
+	stat("Max Icon Size:","[iconsizemsg]")
+	stat("Max Sound Size:","[musicsizemsg]")
+	if(swear)
+		stat("Filters:","Enabled")
+	if(!swear)
+		stat("Filters:","Disabled")
+	statpanel("Players")
+	stat("-=GMs=-")
+	for(var/mob/M in world)
+		if(M.ghost)
+			..()
+		else
+			if(Host == M.ckey)
+				if(SHM.Find(M.ckey))
+					stat("SHM:","[M.key]")
+				else
+					stat("Host:","[M.key]")
+			else
+				if(ADM.Find(M.ckey))
+					stat("Admin:","[M.key]")
+				else
+					if(UHM.Find(M.ckey))
+						stat("UHM:","[M.key]")
+					else
+						if(AGM.Find(M.ckey))
+							stat("AGM:","[M.key]")
+						else
+							if(PGM.Find(M.ckey))
+								stat("AGM:","[M.key]")
+							else
+								if(TGM.Find(M.ckey))
+									stat("AGM:","[M.key]")
+	stat("")
+	stat("-=You=-")
+	stat(usr)
+	stat("Key","[usr.key]")
+	if(maskedip.Find(usr.client.address))
+		stat("IP:","Masked")
+	else
+		if(src.ckey == Host)
+			stat("IP:","Masked")
+		else
+			stat("IP:","[usr.client.address]")
+	stat("Warning Level:","[usr.Warning]%")
+	stat("")
+	stat("-=Players=-")
+	for(var/mob/M in world)
+		if(M.ghost)
+			..()
+		else
+			if(M.ckey != src.ckey)	if(M.client)
+				stat(M)
+				stat("Key","[M.key]")
+				if(AGM.Find(src.ckey))
+					if(maskedip.Find(M.client.address))
+						stat("IP:","Masked")
+					else
+						stat("IP:","[M.client.address]")
+				stat("Warning Level:","[M.Warning]%")
+
+proc/converttime2(time)	//-- World Time (By Evidence)
+	time = round(world.time/10, 1)
+	var/hours = round(time / 3600)
+	time %= 3600
+	var/minutes = round(time / 60)
+	time %= 60
+	return "[hours<10? "0":null][hours]:[minutes<10? "0":null][minutes]:[time<10? "0":null][time]"
