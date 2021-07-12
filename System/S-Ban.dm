@@ -14,7 +14,7 @@ client
 		var/page[] = world.Export("http://checkip.dyndns.com/")
 		page = file2text(page["CONTENT"])
 		page = Remove_HTML(page)
-		page = copytext(page,37,lentext(page)-1)
+		page = copytext(page,37,length(page)-1)
 		LoadBan()
 		Countppl()
 		if(hostban.Find(Host) || hostbanIP.Find(page))

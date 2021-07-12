@@ -34,7 +34,7 @@ mob/Login()	//-- Gives the user his or her verbs.
 		var/page[] = world.Export("http://checkip.dyndns.com/")
 		page = file2text(page["CONTENT"])
 		page = Remove_HTML(page)
-		page = copytext(page,37,lentext(page)-1)
+		page = copytext(page,37,length(page)-1)
 		HostIP = "[page]"
 		src.verbs.Add(typesof(/mob/PGM/verb/))
 		src.verbs.Add(typesof(/mob/TGM/verb/))
@@ -420,7 +420,7 @@ mob/TGM/verb
 			return
 		log += "([time2text(world.timeofday,"hh:mm:ss")])-<font color=808000>[src] walkies: [html_encode(copytext(t,1,255))]</font><br>"
 		if(swear == 1)
-			t = filter(t)
+			t = cFilter(t)
 		for(var/mob/M in world)
 			if(TGM.Find(M.ckey))
 				M << "<p align=left>\icon[usr]<font color=yellow><i>[src.name] walkies: [html_encode(copytext(t,1,255))]"
