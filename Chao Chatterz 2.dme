@@ -6,13 +6,6 @@
 // END_INTERNALS
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "PNG"
-#define FILE_DIR "PNG/Login1"
-#define FILE_DIR "PNG/Login2"
-#define FILE_DIR "PNG/Login3"
-#define FILE_DIR "PNG/Login4"
-#define FILE_DIR "Resource"
-#define FILE_DIR "System"
 // END_FILE_DIR
 
 // BEGIN_PREFERENCES

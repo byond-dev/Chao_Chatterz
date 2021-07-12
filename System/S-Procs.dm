@@ -45,7 +45,7 @@ proc	//-- Save/Load Mute
 			usr << "<font color=#C0FFC0>You are in jail."
 
 proc	//-- Cuss Filter
-	filter(say as text)
+	cFilter(say as text)
 		var/p
 		say = "" + copytext(say,1) + ""
 		if(profanity.len)

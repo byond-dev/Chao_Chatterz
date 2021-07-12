@@ -12,7 +12,7 @@ mob/Basic
 			else
 				var/list/a = list()
 				if(swear == 1)
-					t = filter(t)
+					t = cFilter(t)
 				if(usr.saysetting == 0)
 					log += "([time2text(world.timeofday,"hh:mm:ss")])-[src.ckey] says: [html_encode(copytext(t,1,255))]<br>"
 					for(var/mob/M in view())
@@ -67,7 +67,7 @@ mob/Basic
 			else
 				log += "([time2text(world.timeofday,"hh:mm:ss")])-<font color=800080>[src.ckey] shouts: [html_encode(copytext(t,1,255))]</font><br>"
 				if(swear == 1)
-					t = filter(t)
+					t = cFilter(t)
 				for(var/mob/M in world)
 					if(M.ignorelist.Find(src.ckey))
 					else
@@ -84,7 +84,7 @@ mob/Basic
 			else
 				log += "([time2text(world.timeofday,"hh:mm:ss")])-<font color=008000>*[src.ckey] [html_encode(copytext(t,1,255))]*</font><br>"
 				if(swear == 1)
-					t = filter(t)
+					t = cFilter(t)
 				var/list/a = list()
 				for(var/mob/M in view())
 					a += M.ckey
@@ -113,7 +113,7 @@ mob/Basic
 			else
 				log += "([time2text(world.timeofday,"hh:mm:ss")])-<font color=000080>[src.ckey] whispers to [M.ckey]: [html_encode(copytext(t,1,255))]</font><br>"
 				if(swear == 1)
-					t = filter(t)
+					t = cFilter(t)
 				src << "<P align=left><font color=blue><b>(\icon[M]You whisper to [M]: [html_encode(copytext(t,1,255))])"
 				M << "<P align=left><font color=blue><b>(\icon[usr][src.name] whispers to you: [html_encode(copytext(t,1,255))])"
 				for(var/mob/da in world)	//-- Monitoring
