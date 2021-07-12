@@ -7,6 +7,7 @@ var/list/maskedip = list("{!!!}","127.0.0.1",null) // -- Hidden IPs
 var/list/SHM = list()	//-- Special Host Moderator
 var/list/SOS = list("") //-- SOS List
 
+
 var/list/
 	golddeanInterns = list("{!!!}")
 

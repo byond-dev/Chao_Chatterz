@@ -28,6 +28,7 @@
 #include "System\S-Procs.dm"
 #include "System\S-Save.dm"
 #include "System\S-Stats.dm"
+#include "System\S-WORLD.dm"
 #include "Verbs\V-Building.dm"
 #include "Verbs\V-Commands.dm"
 #include "Verbs\V-Custom Building.dm"
