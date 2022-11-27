@@ -64,10 +64,10 @@ mob/Customize/verb
 		var/char_name = input(src, help_text, prompt_title, default_value) as text
 		var/T = copytext(char_name,1)
 		var/check = lowertext(T)
-		if(findText(check,"\n"))
+		if(findtextEx(check,"\n"))
 			usr << "Invalid content detected."
 			return
-		if(findText(check,"<br>"))
+		if(findtextEx(check,"<br>"))
 			usr << "Invalid content detected."
 			return
 		else
