@@ -1,0 +1,16 @@
+on:
+  pull_request:
+    branches: master
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ../actions/install-byond.yml
+
+      - uses: actions/checkout@v3
+
+      - name: Transpile Code
+        run: byondexec DreamMaker "Chao Chatterz 2.dme"

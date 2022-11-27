@@ -1,0 +1,29 @@
+name: Install BYOND
+
+on:
+  workflow_call:
+    inputs:
+      major:
+        description: 'Major version of BYOND to download'
+        default: '514'
+        required: false
+        type: string
+      minor:
+        description: 'Minor version of BYOND to download'
+        default: '1589'
+        required: false
+        type: string
+
+jobs:
+  install-byond:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download BYOND
+        run: curl https://www.byond.com/download/build/${{inputs.major}}/${{inputs.major}}.${{inputs.minor}}_byond_linux.zip -o byond.zip
+    
+      - name: Unzip BYOND
+        run: unzip byond.zip
+
+      - name: Install BYOND
+        run: cd ./byond && make here && cd ./bin && ./byondsetup && cd ../..
